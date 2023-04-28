@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.products {
+	width: 100%;
+	height: max-content;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+	gap: 2em;
+	grid-auto-rows: max-content;
+	padding: 2em;
+}
+
+.product {
+	padding: 1em 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.2em;
+	border: 2px solid #2b2b2b;
+	border-radius: 15px;
+}
+
+.title {
+	font-weight: 600;
+}
+
+.price {
+	font-size: 0.9em;
+}
+
+form {
+	width: 100%;
+	height: max-content;
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	padding: 2em;
+}
+
+.options {
+	width: 100%;
+	height: max-content;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+	gap: 2em;
+	grid-auto-rows: max-content;
+}
+
+input, select, textarea, button {
+	border: none;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input, select {
+	background-color: transparent;
+	padding: 1em 2em;
+	border-radius: 15px;
+	border: 2px solid #2b2b2b;
+}
+
+textarea {
+	padding: 1em 2em;
+	border-radius: 15px;
+	border: 2px solid #2b2b2b;
+}
+
+button {
+	width: max-content;
+	padding: 1em 2em;
+	background-color: transparent;
+	border-radius: 15px;
+	border: 2px solid #2b2b2b;
+	cursor: pointer;
+	transition: 0.2s ease-out;
+	font-weight: 600;
+}
+
+button:hover {
+	background-color: #2b2b2b;
+	color: #ffffff;
+}

@@ -1,0 +1,31 @@
+<form>
+	<div class="options">
+		<input type="text" name="title" placeholder="Título">
+		<input type="text" name="code" placeholder="Código">
+		<input type="number" name="price" placeholder="Precio">
+		<input type="number" name="stock" placeholder="Stock">
+		<select name="category">
+			<option value="default" disabled selected>Selecciona una categoría</option>
+			<option value="category1">Categoría 1</option>
+			<option value="category2">Categoría 2</option>
+		</select>
+		<textarea name="description" placeholder="Descripción"></textarea>
+	</div>
+	<button type="submit">
+		Añadir
+	</button>
+</form>
+<div class="products">
+	{{#each products}}
+		<div class="product">
+			<div class="title">
+				{{this.title}}
+			</div>
+			<div class="price">
+				${{this.price}}
+			</div>
+		</div>
+	{{/each}}
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/index.js"></script>

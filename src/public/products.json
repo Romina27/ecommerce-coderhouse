@@ -86,5 +86,21 @@
 		"stock": 3,
 		"category": "categoría",
 		"status": true
+	},
+	{
+		"id": 9,
+		"code": "abcd134",
+		"title": "Producto 9",
+		"price": "155",
+		"thumbnails": "Sin imagen",
+		"description": "si",
+		"stock": "3",
+		"category": "category1",
+		"status": true
+	},
+	{
+		"id": 10,
+		"thumbnails": "Sin imagen",
+		"status": true
 	}
 ]

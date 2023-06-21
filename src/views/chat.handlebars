@@ -1,0 +1,20 @@
+<div class="chatWrapper">
+    <div class="chat">
+        {{#each messages}}
+            <div class="message" id={{this.uid}}>
+                <div class="name">
+                    {{this.name}}
+                </div>
+                <div class="content">
+                    {{this.message}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <form class="sendMessage" autocomplete="off">
+        <input type="text" name="message" placeholder="Mensaje" required>
+        <button>Enviar</button>
+    </form>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/chat.js"></script>

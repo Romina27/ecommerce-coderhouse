@@ -1,9 +1,7 @@
 import { Router } from 'express'
-import path from 'path'
-import { __dirname } from '../../utils.js'
-import ProductManager from '../../productManager.js'
+import ProductManager from '../../dao/db/productManager.js'
 
-const products = new ProductManager(path.join(__dirname, 'public/products.json'))
+const products = new ProductManager()
 
 const router = Router()
 

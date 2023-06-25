@@ -7,11 +7,11 @@ const products = new ProductManager()
 const router = Router()
 
 router.get('/', (req, res) => {
-	products.getProducts()
+	products.getProducts(undefined, undefined, undefined, undefined, true)
 	.then(products => {
 		res.render('home', {
 			title: 'Productos',
-			products
+			products: products.docs
 		})
 	})
 })

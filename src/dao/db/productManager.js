@@ -23,12 +23,17 @@ class ProductManager {
 		throw new Error('Este producto ya existe!')
 	}
 
-	getProducts = async (limit) => {
-		if (limit) {
-			return Product.find({ status: true }).limit(limit)
-		}
-			
-		return Product.find({ status: true })
+	getProducts = async (limit = 10, page = 1, query, sort, lean = undefined) => {
+		return Product.paginate(
+			{ ...query, status: true },
+			{ limit, page, sort: { createdAt: sort || 'desc' }, lean }
+		).then(data => {
+			return {
+				...data,
+				prevLink: data.prevPage ? `/api/products?page=${data.prevPage}` : null,
+				nextLink: data.nextPage ? `/api/products?page=${data.nextPage}` : null
+			}
+		})
 	}
 
 	getProductById = async id => {

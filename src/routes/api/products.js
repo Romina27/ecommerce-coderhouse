@@ -6,9 +6,9 @@ const products = new ProductManager()
 const router = Router()
 
 router.get('/', (req, res) => {
-	const { limit } = req.query
+	const { limit, page, query, sort } = req.query
 	
-	products.getProducts(limit)
+	products.getProducts(limit, page, query, sort)
 	.then(products => {
 		return res.send(products)
 	}).catch(err => {

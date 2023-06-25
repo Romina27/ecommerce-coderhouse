@@ -21,7 +21,11 @@ class CartManager {
         })
 	}
 
-	addProduct = async (cid, pid) => {
+    updateCart = (cid, products) => {
+        
+    }
+
+	addProduct = async (cid, pid, quantity = undefined) => {
 		await products.getProductById(pid)
 
         return Cart.findById(cid)
@@ -31,7 +35,7 @@ class CartManager {
             return Cart.findOne({ _id: cid, 'products.product': pid })
             .then(doc => {
                 if (!doc) {
-                    const newProducts = [...data.products, { product: pid, quantity: 1 }]
+                    const newProducts = [...data.products, { product: pid, quantity: quantity || 1 }]
 
                     return Cart.findByIdAndUpdate(cid, { products: newProducts }, { new: true })
                     .then(() => 'Producto añadido exitosamente')
@@ -39,12 +43,22 @@ class CartManager {
 
                 return Cart.findOneAndUpdate(
                     { _id: cid },
-                    { $inc: { 'products.$[p].quantity': 1 } },
+                    { $inc: { 'products.$[p].quantity': quantity || 1 } },
                     { arrayFilters: [{ 'p.product': new Types.ObjectId(pid) }], new: true }
                 ).then(() => 'Producto añadido exitosamente')
             })
         })
 	}
+
+    deleteProduct = async (cid, pid) => {
+        await products.getProductById(pid)
+
+        return Cart.updateOne(
+            { _id: cid },
+            { $pull: { 'products': { 'product': pid } } },
+            { new: true }
+        ).then(() => 'Producto eliminado exitosamente')
+    }
 }
 
 export default CartManager
